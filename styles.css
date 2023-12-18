@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #222222;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 16px;
+}
+
+/* Heading */
+
+.heading {
+  padding: 32.2px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading-text {
+  font-size: 22px;
+  font-weight: 400;
+  color: #EFEFEF;
+}
+
+.color-theme {
+  cursor: pointer;
+  font-size: 15px;
+  color: #EFEFEF;
+  font-weight: 600;
+}
+
+/* Form add tasks */
+
+.form-add-tasks {
+  border: 1px solid #B1B1B1;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 7.6px 12px 7.6px 12px;
+  background-color: transparent;
+  border-radius: 10px;
+  margin-bottom: 34px;
+  position: relative;
+}
+
+.input-add-tasks {
+  border: none;
+  background-color: transparent;
+  font-size: 15px;
+  line-height: 15px;
+  width: 100%;
+  max-width: 100%;
+  margin-right: 13px;
+  color: #EFEFEF;
+}
+
+.input-add-tasks:focus {
+  outline: none;
+}
+
+.input-add-tasks::placeholder {
+  color: #EFEFEF;
+  opacity: 0.7;
+}
+
+.icon-add-tasks {
+  color: #858585;
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.active-icon {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.main-tasks-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 35px;
+}
+
+/* Tasks */
+
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 26.8px;
+  padding-left: 6px;
+  padding-right: 12px;
+}
+
+.task {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-side,
+.right-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left-side {
+  column-gap: 6px;
+  position: relative;
+  width: 100%;
+}
+
+.mark-task-icon {
+  font-size: 20px;
+}
+
+.task-input {
+  border: none;
+  font-size: 15px;
+  background-color: transparent;
+  width: 100%;
+  color: #EFEFEF;
+}
+
+.task-input:focus {
+  outline: none;
+}
+
+.right-side {
+  column-gap: 10px;
+}
+
+.icon-delete {
+  margin-left: 12px;
+  font-size: 18px;
+}
+
+/* Marked Tasks */
+
+.marked-tasks-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 26.8px;
+  padding-left: 6px;
+  padding-right: 12px;
+}
+
+.marked-task {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.marked-task .left-side {
+  opacity: 0.5;
+}
+
+.mark-task-icon1 {
+  font-size: 20px;
+}
+
+.marked-task .left-side .task-input {
+  text-decoration: line-through;
+}
+
+.marked-task .icon2-delete {
+  opacity: 0.5;
+  margin-left: 12px;
+  font-size: 18px;
+}
+
+.marked-task .info-icon {
+  opacity: 0.5;
+  font-size: 18px;
+}
+
+.mark-task-icon,
+.mark-task-icon1,
+.icon-delete,
+.icon2-delete,
+.info-icon {
+  cursor: pointer;
+  color: #858585;
+}
