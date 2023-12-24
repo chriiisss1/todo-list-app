@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #222222;
+  background-color: #fff;
 }
 
 button {
@@ -28,7 +28,7 @@ button {
 /* Heading */
 
 .heading {
-  padding: 32.2px 0;
+  padding: 28.2px 0;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -39,14 +39,7 @@ button {
 .heading-text {
   font-size: 22px;
   font-weight: 400;
-  color: #EFEFEF;
-}
-
-.color-theme {
-  cursor: pointer;
-  font-size: 15px;
-  color: #EFEFEF;
-  font-weight: 600;
+  color: #202020;
 }
 
 /* Form add tasks */
@@ -72,7 +65,7 @@ button {
   width: 100%;
   max-width: 100%;
   margin-right: 13px;
-  color: #EFEFEF;
+  color: #404040;
 }
 
 .input-add-tasks:focus {
@@ -80,7 +73,7 @@ button {
 }
 
 .input-add-tasks::placeholder {
-  color: #EFEFEF;
+  color: #404040;
   opacity: 0.7;
 }
 
@@ -143,7 +136,7 @@ button {
   font-size: 15px;
   background-color: transparent;
   width: 100%;
-  color: #EFEFEF;
+  color: #404040;
 }
 
 .task-input:focus {
