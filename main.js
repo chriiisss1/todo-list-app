@@ -272,7 +272,7 @@ const addEmptyListText = () => {
 const removeEmptyListText = () => {
   const emptyListText = document.querySelector(".empty-list-text");
 
-  emptyListText.remove();
+  if (emptyListText) emptyListText.remove();
 };
 
 const getTasks = () => {
