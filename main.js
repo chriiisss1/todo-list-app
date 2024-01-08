@@ -4,6 +4,9 @@ const buttonAddTasks = document.querySelector(".icon-add-tasks");
 const tasksContainer = document.querySelector(".tasks-container");
 const markedTasksContainer = document.querySelector(".marked-tasks-container");
 const mainTasksContainer = document.querySelector(".main-tasks-container");
+const emptyListTextContainer = document.querySelector(
+  ".empty-list-text-container"
+);
 
 const handleSubmitTask = (e) => {
   e.preventDefault();
@@ -29,11 +32,12 @@ const removeMaincontainerGap = () => {
   const tasks = JSON.parse(localStorage.getItem("tasks"));
   const markedTasks = JSON.parse(localStorage.getItem("markedTasks"));
 
-  if (tasks.length > 0 && markedTasks.length > 0) {
-    console.log("ok");
-    mainTasksContainer.style.rowGap = "26.8px";
-  } else {
-    mainTasksContainer.style.rowGap = "0px";
+  if (tasks && markedTasks) {
+    if (tasks.length > 0 && markedTasks.length > 0) {
+      mainTasksContainer.style.rowGap = "26.8px";
+    } else {
+      mainTasksContainer.style.rowGap = "0px";
+    }
   }
 };
 
@@ -60,6 +64,7 @@ const addTask = (inputValue) => {
 
     tasks.push(newTask);
     localStorage.setItem("tasks", JSON.stringify(tasks));
+    if (tasks.length >= 1) removeEmptyListText();
     InputAddTasks.value = "";
     buttonAddTasks.classList.remove("active-icon");
     renderTasks(tasks);
@@ -74,6 +79,7 @@ const addTask = (inputValue) => {
 
     tasks.push(newTask);
     localStorage.setItem("tasks", JSON.stringify(tasks));
+    if (tasks.length >= 1) removeEmptyListText();
     InputAddTasks.value = "";
     buttonAddTasks.classList.remove("active-icon");
     renderTasks(tasks);
@@ -137,6 +143,7 @@ const renderTasks = (tasks) => {
       sortedTasks(tasks);
       tasks.splice(i, 1);
       localStorage.setItem("tasks", JSON.stringify(tasks));
+      if (tasks.length === 0) addEmptyListText();
       renderTasks(tasks);
     });
   });
@@ -208,6 +215,7 @@ const renderMarkedTasks = (markedTasks) => {
       const markedTasks = JSON.parse(localStorage.getItem("markedTasks"));
       markedTasks.splice(i, 1);
       localStorage.setItem("markedTasks", JSON.stringify(markedTasks));
+      if (markedTasks.length === 0) addEmptyListText();
       renderMarkedTasks(markedTasks);
     });
   });
@@ -251,12 +259,37 @@ const returnMarkedTasks = (i) => {
   }
 };
 
+const addEmptyListText = () => {
+  const text = `
+  <h1 class="empty-list-text">
+    No tienes tareas :D
+  </h1>
+  `;
+
+  emptyListTextContainer.innerHTML = text;
+};
+
+const removeEmptyListText = () => {
+  const emptyListText = document.querySelector(".empty-list-text");
+
+  emptyListText.remove();
+};
+
 const getTasks = () => {
   let tasks = JSON.parse(localStorage.getItem("tasks"));
+
+  if (tasks === null) {
+    addEmptyListText();
+  }
 
   if (tasks) {
     tasks = tasks.filter((element) => element.task.length > 0);
     tasks.forEach((element) => (element.task = element.task.trim()));
+
+    if (tasks.length === 0) {
+      addEmptyListText();
+    }
+
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
     renderTasks(tasks);
@@ -266,6 +299,10 @@ const getTasks = () => {
 const getMarkedTask = () => {
   const markedTasks = JSON.parse(localStorage.getItem("markedTasks"));
   if (markedTasks) {
+    if (markedTasks.length >= 1) {
+      removeEmptyListText();
+    }
+
     renderMarkedTasks(markedTasks);
   }
 };
