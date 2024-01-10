@@ -262,7 +262,7 @@ const returnMarkedTasks = (i) => {
 const addEmptyListText = () => {
   const text = `
   <h1 class="empty-list-text">
-    No tienes tareas :D
+    No tasks :D
   </h1>
   `;
 
