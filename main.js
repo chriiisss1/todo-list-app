@@ -108,7 +108,7 @@ const renderTasks = (tasks) => {
   const markTaskIcon = document.querySelectorAll(".mark-task-icon");
   const iconDelete = document.querySelectorAll(".icon-delete");
 
-  // Actulizar tarea en el localstorage
+  // Update task in local storage
   taskInput.forEach((element, i) => {
     element.addEventListener("input", (e) => {
       const tasks = JSON.parse(localStorage.getItem("tasks"));
@@ -121,7 +121,7 @@ const renderTasks = (tasks) => {
     });
   });
 
-  // Mover a tareas marcadas
+  // Move to marked tasks
   markTaskIcon.forEach((element, i) => {
     element.addEventListener("click", () => {
       const tasks = JSON.parse(localStorage.getItem("tasks"));
@@ -136,7 +136,7 @@ const renderTasks = (tasks) => {
     });
   });
 
-  // Eliminar tarea
+  // Delete task
   iconDelete.forEach((element, i) => {
     element.addEventListener("click", () => {
       const tasks = JSON.parse(localStorage.getItem("tasks"));
@@ -209,7 +209,7 @@ const renderMarkedTasks = (markedTasks) => {
   const iconDelete2 = document.querySelectorAll(".icon2-delete");
   const markTaskIcon1 = document.querySelectorAll(".mark-task-icon1");
 
-  // Eliminar tarea marcada
+  // Delete marked tasks
   iconDelete2.forEach((element, i) => {
     element.addEventListener("click", () => {
       const markedTasks = JSON.parse(localStorage.getItem("markedTasks"));
@@ -220,7 +220,7 @@ const renderMarkedTasks = (markedTasks) => {
     });
   });
 
-  // Devolver tareas
+  // Return tasks
   markTaskIcon1.forEach((element, i) => {
     element.addEventListener("click", () => {
       returnMarkedTasks(i);
