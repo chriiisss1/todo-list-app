@@ -44,8 +44,8 @@ button {
 
 /* Form add tasks */
 
-.form-add-tasks {
-  border: 1px solid #B1B1B1;
+.add-tasks-form {
+  border: 1px solid #b1b1b1;
   width: 100%;
   align-items: center;
   display: flex;
@@ -57,7 +57,7 @@ button {
   position: relative;
 }
 
-.input-add-tasks {
+.add-task-input {
   border: none;
   background-color: transparent;
   font-size: 15px;
@@ -68,16 +68,16 @@ button {
   color: #404040;
 }
 
-.input-add-tasks:focus {
+.add-task-input:focus {
   outline: none;
 }
 
-.input-add-tasks::placeholder {
+.add-task-input::placeholder {
   color: #404040;
   opacity: 0.7;
 }
 
-.icon-add-tasks {
+.add-task-icon-arrow-up {
   color: #858585;
   opacity: 0.5;
   pointer-events: none;
@@ -96,11 +96,11 @@ button {
   margin-bottom: 35px;
 }
 
-.empty-list-text {
+.no-tasks-text {
   font-size: 20px;
   font-weight: 500;
   color: #404040;
-  opacity: .5;
+  opacity: 0.5;
   justify-content: center;
   display: flex;
 }
@@ -123,8 +123,7 @@ button {
   align-items: center;
 }
 
-.left-side,
-.right-side {
+.left-side {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -136,7 +135,7 @@ button {
   width: 100%;
 }
 
-.mark-task-icon {
+.task-icon-circle {
   font-size: 20px;
 }
 
@@ -152,11 +151,7 @@ button {
   outline: none;
 }
 
-.right-side {
-  column-gap: 10px;
-}
-
-.icon-delete {
+.task-icon-trash {
   margin-left: 12px;
   font-size: 18px;
 }
@@ -183,7 +178,7 @@ button {
   opacity: 0.5;
 }
 
-.mark-task-icon1 {
+.marked-task-icon-circle {
   font-size: 20px;
 }
 
@@ -191,7 +186,7 @@ button {
   text-decoration: line-through;
 }
 
-.marked-task .icon2-delete {
+.marked-task .marked-task-icon-trash {
   opacity: 0.5;
   margin-left: 12px;
   font-size: 18px;
@@ -202,10 +197,10 @@ button {
   font-size: 18px;
 }
 
-.mark-task-icon,
-.mark-task-icon1,
-.icon-delete,
-.icon2-delete,
+.task-icon-circle,
+.marked-task-icon-circle,
+.task-icon-trash,
+.marked-task-icon-trash,
 .info-icon {
   cursor: pointer;
   color: #858585;
