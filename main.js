@@ -1,29 +1,29 @@
-const formAddTasks = document.querySelector('.add-tasks-form');
-const InputAddTasks = document.querySelector('.add-task-input');
-const buttonAddTasks = document.querySelector('.add-task-icon-arrow-up');
+const addTasksForm = document.querySelector('.add-tasks-form');
+const addTasksInput = document.querySelector('.add-task-input');
+const addTasksButton = document.querySelector('.add-task-icon-arrow-up');
 const tasksContainer = document.querySelector('.tasks-container');
 const markedTasksContainer = document.querySelector('.marked-tasks-container');
 const mainTasksContainer = document.querySelector('.main-tasks-container');
-const emptyListTextContainer = document.querySelector('.no-tasks-container');
+const noTasksContainer = document.querySelector('.no-tasks-container');
 
 const handleSubmitTask = (e) => {
   e.preventDefault();
 
-  if (InputAddTasks.value.trim() !== '') {
-    addTask(InputAddTasks.value.trim());
+  if (addTasksInput.value.trim() !== '') {
+    addTask(addTasksInput.value.trim());
   }
 };
 
 const handleVisibilityButton = () => {
-  if (InputAddTasks.value.trim() !== '') {
-    buttonAddTasks.classList.add('active-icon');
+  if (addTasksInput.value.trim() !== '') {
+    addTasksButton.classList.add('active-icon');
   } else {
-    buttonAddTasks.classList.remove('active-icon');
+    addTasksButton.classList.remove('active-icon');
   }
 };
 
 const clearInputValue = () => {
-  InputAddTasks.value = '';
+  addTasksInput.value = '';
 };
 
 const removeMaincontainerGap = () => {
@@ -62,9 +62,9 @@ const addTask = (inputValue) => {
 
     tasks.push(newTask);
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    if (tasks.length >= 1) removeEmptyListText();
-    InputAddTasks.value = '';
-    buttonAddTasks.classList.remove('active-icon');
+    if (tasks.length >= 1) removeNoTasksText();
+    addTasksInput.value = '';
+    addTasksButton.classList.remove('active-icon');
     renderTasks(tasks);
   } else {
     const tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -77,9 +77,9 @@ const addTask = (inputValue) => {
 
     tasks.push(newTask);
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    if (tasks.length >= 1) removeEmptyListText();
-    InputAddTasks.value = '';
-    buttonAddTasks.classList.remove('active-icon');
+    if (tasks.length >= 1) removeNoTasksText();
+    addTasksInput.value = '';
+    addTasksButton.classList.remove('active-icon');
     renderTasks(tasks);
   }
 };
@@ -103,8 +103,8 @@ const renderTasks = (tasks) => {
   tasksContainer.innerHTML = tasksHTML;
 
   const taskInput = document.querySelectorAll('.task-input');
-  const markTaskIcon = document.querySelectorAll('.task-icon-circle');
-  const iconDelete = document.querySelectorAll('.task-icon-trash');
+  const taskIconCircle = document.querySelectorAll('.task-icon-circle');
+  const taskIconTrash = document.querySelectorAll('.task-icon-trash');
 
   // Update task in local storage
   taskInput.forEach((element, i) => {
@@ -120,7 +120,7 @@ const renderTasks = (tasks) => {
   });
 
   // Move to marked tasks
-  markTaskIcon.forEach((element, i) => {
+  taskIconCircle.forEach((element, i) => {
     element.addEventListener('click', () => {
       const tasks = JSON.parse(localStorage.getItem('tasks'));
       sortedTasks(tasks);
@@ -135,13 +135,13 @@ const renderTasks = (tasks) => {
   });
 
   // Delete task
-  iconDelete.forEach((element, i) => {
+  taskIconTrash.forEach((element, i) => {
     element.addEventListener('click', () => {
       const tasks = JSON.parse(localStorage.getItem('tasks'));
       sortedTasks(tasks);
       tasks.splice(i, 1);
       localStorage.setItem('tasks', JSON.stringify(tasks));
-      if (tasks.length === 0) addEmptyListText();
+      if (tasks.length === 0) renderNoTasksText();
       renderTasks(tasks);
     });
   });
@@ -204,22 +204,22 @@ const renderMarkedTasks = (markedTasks) => {
 
   markedTasksContainer.innerHTML = markedTasksHTML;
 
-  const iconDelete2 = document.querySelectorAll('.marked-task-icon-trash');
-  const markTaskIcon1 = document.querySelectorAll('.marked-task-icon-circle');
+  const markedTaskIconTrash = document.querySelectorAll('.marked-task-icon-trash');
+  const markedTaskIconCircle = document.querySelectorAll('.marked-task-icon-circle');
 
   // Delete marked tasks
-  iconDelete2.forEach((element, i) => {
+  markedTaskIconTrash.forEach((element, i) => {
     element.addEventListener('click', () => {
       const markedTasks = JSON.parse(localStorage.getItem('markedTasks'));
       markedTasks.splice(i, 1);
       localStorage.setItem('markedTasks', JSON.stringify(markedTasks));
-      if (markedTasks.length === 0) addEmptyListText();
+      if (markedTasks.length === 0) renderNoTasksText();
       renderMarkedTasks(markedTasks);
     });
   });
 
   // Return tasks
-  markTaskIcon1.forEach((element, i) => {
+  markedTaskIconCircle.forEach((element, i) => {
     element.addEventListener('click', () => {
       returnMarkedTasks(i);
     });
@@ -257,35 +257,33 @@ const returnMarkedTasks = (i) => {
   }
 };
 
-const addEmptyListText = () => {
+const renderNoTasksText = () => {
   const text = `
   <h1 class="no-tasks-text">
     No tasks :D
   </h1>
   `;
 
-  emptyListTextContainer.innerHTML = text;
+  noTasksContainer.innerHTML = text;
 };
 
-const removeEmptyListText = () => {
-  const emptyListText = document.querySelector('.no-tasks-text');
+const removeNoTasksText = () => {
+  const noTasksText = document.querySelector('.no-tasks-text');
 
-  if (emptyListText) emptyListText.remove();
+  if (noTasksText) noTasksText.remove();
 };
 
 const getTasks = () => {
   let tasks = JSON.parse(localStorage.getItem('tasks'));
 
-  if (tasks === null) {
-    addEmptyListText();
-  }
+  if (tasks === null) renderNoTasksText();
 
   if (tasks) {
     tasks = tasks.filter((element) => element.task.length > 0);
     tasks.forEach((element) => (element.task = element.task.trim()));
 
     if (tasks.length === 0) {
-      addEmptyListText();
+      renderNoTasksText();
     }
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -297,9 +295,7 @@ const getTasks = () => {
 const getMarkedTask = () => {
   const markedTasks = JSON.parse(localStorage.getItem('markedTasks'));
   if (markedTasks) {
-    if (markedTasks.length >= 1) {
-      removeEmptyListText();
-    }
+    if (markedTasks.length >= 1) removeNoTasksText();
 
     renderMarkedTasks(markedTasks);
   }
@@ -311,6 +307,6 @@ getTasks();
 
 getMarkedTask();
 
-formAddTasks.addEventListener('submit', handleSubmitTask);
+addTasksForm.addEventListener('submit', handleSubmitTask);
 
-InputAddTasks.addEventListener('input', handleVisibilityButton);
+addTasksInput.addEventListener('input', handleVisibilityButton);
