@@ -1,3 +1,14 @@
+:root {
+  --bg-color: #fff;
+  --heading-text: #202020;
+  --task-input-color: #404040;
+  --icon-color: #6c6c6c;
+  --add-task-input-border-color: #b1b1b1;
+  --add-task-input-color: #404040;
+  --no-task-text-color: #404040;
+  --heading-icon-color: #202020;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +17,16 @@
 }
 
 body {
-  background-color: #fff;
+  background-color: var(--bg-color);
+}
+
+body.dark-theme {
+  --bg-color: #222222;
+  --heading-text: #efefef;
+  --task-input-color: #efefef;
+  --add-task-input-color: #efefef;
+  --heading-icon-color: #efefef;
+  --no-task-text-color: #efefef;
 }
 
 button {
@@ -39,18 +59,19 @@ button {
 .heading-text {
   font-size: 22px;
   font-weight: 500;
-  color: #202020;
+  color: var(--heading-text);
 }
 
 .heading-moon-icon {
-  color: #202020;
+  color: var(--heading-icon-color);
   cursor: pointer;
+  font-size: 20px !important;
 }
 
 /* Form add tasks */
 
 .add-tasks-form {
-  border: 1px solid #b1b1b1;
+  border: 1px solid var(--add-task-input-border-color);
   width: 100%;
   align-items: center;
   display: flex;
@@ -70,7 +91,7 @@ button {
   width: 100%;
   max-width: 100%;
   margin-right: 13px;
-  color: #404040;
+  color: var(--add-task-input-color);
 }
 
 .add-task-input:focus {
@@ -78,19 +99,20 @@ button {
 }
 
 .add-task-input::placeholder {
-  color: #404040;
+  color: var(--task-input-color);
   opacity: 0.7;
 }
 
-.add-task-icon-arrow-up {
-  color: #858585;
+.add-task-arrow-up-icon {
+  color: var(--icon-color);
   opacity: 0.5;
   pointer-events: none;
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  font-size: 20px !important;
 }
 
-.active-icon {
+.arrow-up-enable {
   opacity: 1;
   pointer-events: all;
 }
@@ -106,7 +128,7 @@ button {
 .no-tasks-text {
   font-size: 20px;
   font-weight: 500;
-  color: #404040;
+  color: var(--no-task-text-color);
   opacity: 0.5;
   justify-content: center;
   display: flex;
@@ -132,16 +154,15 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-.left-side {
   column-gap: 6px;
   position: relative;
   width: 100%;
 }
 
-.task-icon-circle {
-  font-size: 20px;
+.task-circle-icon {
+  font-size: 20px !important;
+  cursor: pointer;
+  color: var(--icon-color);
 }
 
 .task-input {
@@ -149,16 +170,18 @@ button {
   font-size: 15px;
   background-color: transparent;
   width: 100%;
-  color: #404040;
+  color: var(--task-input-color);
 }
 
 .task-input:focus {
   outline: none;
 }
 
-.task-icon-trash {
+.task-trash-icon {
   margin-left: 12px;
-  font-size: 18px;
+  font-size: 20px !important;
+  color: var(--icon-color);
+  cursor: pointer;
 }
 
 /* Marked Tasks */
@@ -175,36 +198,22 @@ button {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-
-.marked-task .left-side {
   opacity: 0.5;
 }
 
-.marked-task-icon-circle {
-  font-size: 20px;
+.marked-task-circle-icon {
+  font-size: 20px !important;
+  cursor: pointer;
+  color: var(--icon-color);
 }
 
 .marked-task .left-side .task-input {
   text-decoration: line-through;
 }
 
-.marked-task .marked-task-icon-trash {
-  opacity: 0.5;
+.marked-task .marked-task-trash-icon {
   margin-left: 12px;
-  font-size: 18px;
-}
-
-.marked-task .info-icon {
-  opacity: 0.5;
-  font-size: 18px;
-}
-
-.task-icon-circle,
-.marked-task-icon-circle,
-.task-icon-trash,
-.marked-task-icon-trash,
-.info-icon {
+  font-size: 20px !important;
   cursor: pointer;
-  color: #858585;
+  color: var(--icon-color);
 }
