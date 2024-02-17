@@ -22,7 +22,7 @@ const handleSubmitTask = (e) => {
   }
 };
 
-const handleStateButton = () => {
+const handleSubmitStateButton = () => {
   if (addTasksInput.value.trim() !== '') {
     addTasksButton.classList.add('arrow-up-enable');
   } else {
@@ -287,15 +287,10 @@ const onLoadPage = () => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 
     renderTasks(tasks);
-
-    // if (tasks === null) renderNoTasksText();
   };
 
   const getMarkedTask = () => {
-    // const tasks = JSON.parse(localStorage.getItem('tasks'));
     const markedTasks = JSON.parse(localStorage.getItem('markedTasks'));
-
-    // if (tasks.length === 0 && markedTasks === 0) return renderNoTasksText();
 
     renderMarkedTasks(markedTasks);
   };
@@ -308,7 +303,5 @@ const onLoadPage = () => {
 onLoadPage();
 
 addTasksForm.addEventListener('submit', handleSubmitTask);
-
-addTasksInput.addEventListener('input', handleStateButton);
-
+addTasksInput.addEventListener('input', handleSubmitStateButton);
 themeButton.addEventListener('click', handleThemeButton);
