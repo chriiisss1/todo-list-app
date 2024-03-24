@@ -41,6 +41,11 @@ button {
   cursor: pointer;
 }
 
+.heading-moon-icon {
+  fill: var(--black-100);
+  cursor: pointer;
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -62,11 +67,6 @@ button {
   font-size: 22px;
   font-weight: 500;
   color: var(--black-100);
-}
-
-.heading-moon-icon {
-  fill: var(--black-100);
-  cursor: pointer;
 }
 
 /* Add tasks form */
