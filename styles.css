@@ -157,6 +157,8 @@ button {
 .task-circle-icon {
   cursor: pointer;
   fill: var(--gray-300);
+  min-width: 22px;
+  min-height: 22px;
 }
 
 .task-input {
@@ -194,6 +196,8 @@ button {
 .marked-task-circle-icon {
   cursor: pointer;
   fill: var(--gray-200);
+  min-width: 22px;
+  min-height: 22px;
 }
 
 .marked-task .left-side .task-input {
