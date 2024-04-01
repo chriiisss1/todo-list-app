@@ -39,11 +39,15 @@ button {
 .heading-sun-icon {
   fill: var(--black-100);
   cursor: pointer;
+  min-width: 22px;
+  min-height: 22px;
 }
 
 .heading-moon-icon {
   fill: var(--black-100);
   cursor: pointer;
+  min-width: 22px;
+  min-height: 22px;
 }
 
 .container {
@@ -177,6 +181,8 @@ button {
   margin-left: 12px;
   cursor: pointer;
   fill: var(--gray-300);
+  min-width: 22px;
+  min-height: 22px;
 }
 
 .marked-tasks-container {
@@ -209,4 +215,6 @@ button {
   margin-left: 12px;
   cursor: pointer;
   fill: var(--gray-200);
+  min-width: 22px;
+  min-height: 22px;
 }
