@@ -257,7 +257,7 @@ const returnMarkedTask = (i) => {
 const renderNoTasksText = () => {
   const text = `
   <h1 class="no-tasks-text">
-    No tasks :D
+    No tasks
   </h1>
   `;
 
