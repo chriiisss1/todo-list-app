@@ -12,56 +12,28 @@
   <link rel="stylesheet" href="./fonts/geist.css">
 </head>
 
-<!--
-todo-list
-
-todo-list-heading
-todo-list-heading-title
-todo-list-heading-moon-icon-container
-
-todo-list-add-task-form
-todo-list-add-task-form-input
-todo-list-add-task-form-arrow-up-icon
-
-todo-list-no-tasks-container
-
-todo-list-main-tasks-container
-todo-list-tasks-container
-todo-list-marked-tasks-container
-
-todo-list-task
-todo-list-task-left-side
-todo-list-task-circle-icon
-todo-list-task-input
-todo-list-task-trash-icon
-
-todo-list-marked-task
-todo-list-marked-task-left-side
-todo-list-marked-task-circle-icon
-todo-list-marked-task-input
-todo-list-marked-task-trash-icon
--->
-
 <body>
-  <div class="container">
-    <div class="heading">
-      <h1 class="heading-text">Todo List</h1>
-      <div class="heading-theme-icon"></div>
+  <div class="todo-list">
+    <div class="todo-list-header">
+      <h1 class="todo-list-header-heading">Todo List</h1>
+      <div class="todo-list-header-moon-icon-wrapper"></div>
     </div>
-    <form class="add-tasks-form">
-      <input type="text" class="add-task-input" spellcheck="false" placeholder="Add task" autofocus />
+
+    <form class="todo-list-add-task-form">
+      <input type="text" class="todo-list-add-task-form-input" spellcheck="false" placeholder="Add task" autofocus />
       <button>
-        <svg class="add-task-arrow-up-icon" xmlns="http://www.w3.org/2000/svg" height="22" viewBox="0 -960 960 960"
-          width="22">
+        <svg class="todo-list-add-task-form-arrow-up-icon" xmlns="http://www.w3.org/2000/svg" height="22"
+          viewBox="0 -960 960 960" width="22">
           <path
             d="M450.001-180.001v-485.077L222.154-437.232 180.001-480 480-779.999 779.999-480l-42.153 42.768-227.847-227.846v485.077h-59.998Z" />
         </svg>
       </button>
     </form>
-    <div class="no-tasks-container"></div>
-    <div class="main-tasks-container">
-      <div class="tasks-container"></div>
-      <div class="marked-tasks-container"></div>
+
+    <div class="todo-list-no-tasks-wrapper"></div>
+    <div class="todo-list-main-tasks-wrapper">
+      <div class="todo-list-tasks-wrapper"></div>
+      <div class="todo-list-marked-tasks-wrapper"></div>
     </div>
   </div>
   <script src="./main.js" async></script>

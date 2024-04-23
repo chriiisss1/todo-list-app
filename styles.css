@@ -6,13 +6,14 @@
   --black-200: #222222;
   --white-100: #ffffff;
   --white-200: #efefef;
+  --white-0: rgba(255, 255, 255, 0);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "GeistVariable", serif;
+  font-family: 'GeistVariable', serif;
 }
 
 body {
@@ -34,29 +35,33 @@ button {
 }
 
 /* DOM */
-.heading-sun-icon {
+.todo-list-header-sun-icon {
   fill: var(--gray-300);
   cursor: pointer;
   min-width: 22px;
   min-height: 22px;
 }
 
-.heading-moon-icon {
+.todo-list-header-moon-icon {
   fill: var(--gray-300);
   cursor: pointer;
   min-width: 22px;
   min-height: 22px;
 }
 
-.container {
+.todo-list {
   max-width: 800px;
   margin: 0 auto;
   width: 100%;
   padding: 0 16px;
+  margin-bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* Heading */
-.heading {
+/* Header */
+.todo-list-header {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -66,19 +71,19 @@ button {
   padding-right: 12px;
 }
 
-.heading-text {
+.todo-list-header-heading {
   font-size: 20px;
   font-weight: 500;
   color: var(--black-100);
 }
 
-.heading-theme-icon {
+.todo-list-header-moon-icon-wrapper {
   display: flex;
   height: fit-content;
 }
 
 /* Add tasks form */
-.add-tasks-form {
+.todo-list-add-task-form {
   border: 1px solid var(--gray-100);
   width: 100%;
   align-items: center;
@@ -92,7 +97,7 @@ button {
   height: 42px;
 }
 
-.add-task-input {
+.todo-list-add-task-form-input {
   border: none;
   background-color: transparent;
   font-size: 15px;
@@ -103,74 +108,76 @@ button {
   color: var(--black-100);
 }
 
-.add-task-input:focus {
+.todo-list-add-task-form-input:focus {
   outline: none;
 }
 
-.add-task-input::placeholder {
+.todo-list-add-task-form-input::placeholder {
   color: var(--gray-200);
 }
 
-.add-task-arrow-up-icon {
+.todo-list-add-task-form-arrow-up-icon {
   fill: var(--gray-200);
   pointer-events: none;
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
 
-.arrow-up-enable {
+.todo-list-add-task-form-arrow-up-enable {
   fill: var(--black-100);
   pointer-events: all;
 }
 
-.main-tasks-container {
+.todo-list-main-tasks-wrapper {
   padding-left: 6px;
   padding-right: 12px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 35px;
+  margin-bottom: 28px;
 }
 
-.no-tasks-text {
+.todo-list-no-tasks-wrapper {
+  margin: 0 auto;
+}
+
+.todo-list-no-tasks-text {
   font-size: 20px;
   font-weight: 500;
   color: var(--gray-200);
-  opacity: 0.5;
-  justify-content: center;
-  display: flex;
 }
 
-.tasks-container {
+/* Tasks Wrapper */
+.todo-list-tasks-wrapper {
   display: flex;
   flex-direction: column;
   row-gap: 26px;
 }
 
-.task {
+.todo-list-task {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
-.left-side {
+.todo-list-task-left-side {
   display: flex;
   flex-direction: row;
   align-items: center;
   column-gap: 6px;
-  position: relative;
   width: 100%;
 }
 
-.task-circle-icon {
+.todo-list-task-circle-icon {
   cursor: pointer;
   fill: var(--gray-300);
   min-width: 22px;
   min-height: 22px;
 }
 
-.task-input {
+.todo-list-task-input {
   border: none;
   font-size: 15px;
   background-color: transparent;
@@ -178,11 +185,20 @@ button {
   color: var(--black-100);
 }
 
-.task-input:focus {
+.todo-list-task-input:focus {
   outline: none;
 }
 
-.task-trash-icon {
+.todo-list-task-input-shadow {
+  width: 32px;
+  height: 15px;
+  background: linear-gradient(to right, var(--white-0) 50%, var(--white-100) 100%);
+  position: absolute;
+  right: 34px;
+  pointer-events: none;
+}
+
+.todo-list-task-trash-icon {
   margin-left: 12px;
   cursor: pointer;
   fill: var(--gray-300);
@@ -190,36 +206,71 @@ button {
   min-height: 22px;
 }
 
-.marked-tasks-container {
+/* Marked Tasks Wrapper*/
+.todo-list-marked-tasks-wrapper {
   display: flex;
   flex-direction: column;
   row-gap: 26.8px;
 }
 
-.marked-task {
+.todo-list-marked-task {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
-.marked-task-circle-icon {
+.todo-list-marked-task-left-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 6px;
+  width: 100%;
+}
+
+.todo-list-marked-task-circle-icon {
   cursor: pointer;
   fill: var(--gray-200);
   min-width: 22px;
   min-height: 22px;
 }
 
-.marked-task .left-side .task-input {
-  text-decoration: line-through;
+.todo-list-marked-task-input {
+  border: none;
+  font-size: 15px;
+  background-color: transparent;
+  width: 100%;
   color: var(--gray-200);
+  text-decoration: line-through;
 }
 
-.marked-task-trash-icon {
+.todo-list-marked-task-input:focus {
+  outline: none;
+}
+
+.todo-list-marked-task-input-shadow {
+  width: 32px;
+  height: 15px;
+  background: linear-gradient(to right, var(--white-0) 50%, var(--white-100) 100%);
+  position: absolute;
+  right: 34px;
+  pointer-events: none;
+}
+
+.todo-list-marked-task-trash-icon {
   margin-left: 12px;
   cursor: pointer;
   fill: var(--gray-200);
   min-width: 22px;
   min-height: 22px;
+}
+
+.todo-list-delete-all {
+  font-size: 14px;
+  color: var(--black-100);
+  cursor: pointer;
+  font-weight: 500;
+  margin: 0 auto;
 }
