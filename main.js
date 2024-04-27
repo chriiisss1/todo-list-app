@@ -146,14 +146,15 @@ const renderTasks = (tasks) => {
 
   DeleteAllTasks();
 
-  // Añadir y quitar borde y sombra al editar una tarea
   tasksInput.forEach((element, i) => {
+    // Añadir borde cuando se hace click en una tarea
     element.addEventListener('focus', () => {
       element.style.outline = '2px solid var(--gray-100)';
       tasksInputShadow[i].style.display = 'none';
       inputOnFocus = true;
     });
 
+    // Ocultar sombra de input cuando el scroll llega al final
     element.addEventListener('scroll', () => {
       let scrollLeft = element.scrollLeft;
       const scrollWidth = element.scrollWidth;
@@ -169,6 +170,7 @@ const renderTasks = (tasks) => {
       }
     });
 
+    // Quitar borde cuando se hace click fuera de una tarea
     element.addEventListener('blur', () => {
       element.style.outline = '0px transparent';
       tasksInputShadow[i].style.display = 'block';
@@ -269,6 +271,8 @@ const renderMarkedTasks = (markedTasks) => {
 
   markedTasksWrapper.innerHTML = markedTasksHTML;
 
+  const markedTasksInputShadow = document.querySelectorAll('.todo-list-marked-task-input-shadow');
+  const markedTasksInput = document.querySelectorAll('.todo-list-marked-task-input');
   const markedTasksTrashIcon = document.querySelectorAll('.todo-list-marked-task-trash-icon');
   const markedTasksCircleIcon = document.querySelectorAll('.todo-list-marked-task-circle-icon');
   const tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -282,6 +286,22 @@ const renderMarkedTasks = (markedTasks) => {
   if (markedTasks.length > 1) renderDeleteAllText();
 
   if (tasks.length === 1 && markedTasks.length === 1) renderDeleteAllText();
+
+  markedTasksInput.forEach((element, i) => {
+    element.addEventListener('scroll', () => {
+      let scrollLeft = element.scrollLeft;
+      const scrollWidth = element.scrollWidth;
+      const clientWidth = element.clientWidth;
+
+      let redondeadoArriba = Math.ceil(scrollLeft);
+
+      if (redondeadoArriba + clientWidth >= scrollWidth) {
+        markedTasksInputShadow[i].style.display = 'none';
+      } else if (redondeadoArriba + clientWidth <= scrollWidth) {
+        markedTasksInputShadow[i].style.display = 'block';
+      }
+    });
+  });
 
   // Delete marked task
   markedTasksTrashIcon.forEach((element, i) => {
