@@ -154,7 +154,7 @@ const renderTasks = (tasks) => {
       inputOnFocus = true;
     });
 
-    // Ocultar sombra de input cuando el scroll llega al final
+    // Ocultar sombra del input cuando el scroll llega al final
     element.addEventListener('scroll', () => {
       let scrollLeft = element.scrollLeft;
       const scrollWidth = element.scrollWidth;
@@ -178,7 +178,7 @@ const renderTasks = (tasks) => {
     });
   });
 
-  // Edit task in local storage
+  // Guardar edicion de una tarea en el Local Storage
   tasksInput.forEach((element, i) => {
     element.addEventListener('input', (e) => {
       const tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -191,7 +191,7 @@ const renderTasks = (tasks) => {
     });
   });
 
-  // Move to marked tasks
+  // Enviar a tareas marcadas
   tasksCircleIcon.forEach((element, i) => {
     element.addEventListener('click', () => {
       const tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -206,7 +206,7 @@ const renderTasks = (tasks) => {
     });
   });
 
-  // Delete task
+  // Eliminar tarea
   tasksTrashIcon.forEach((element, i) => {
     element.addEventListener('click', () => {
       const tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -303,7 +303,7 @@ const renderMarkedTasks = (markedTasks) => {
     });
   });
 
-  // Delete marked task
+  // Eliminar tarea marcada
   markedTasksTrashIcon.forEach((element, i) => {
     element.addEventListener('click', () => {
       const markedTasks = JSON.parse(localStorage.getItem('markedTasks'));
@@ -313,7 +313,7 @@ const renderMarkedTasks = (markedTasks) => {
     });
   });
 
-  // Return task
+  // Devolver una tarea marcada
   markedTasksCircleIcon.forEach((element, i) => {
     element.addEventListener('click', () => {
       returnMarkedTask(i);
