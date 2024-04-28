@@ -267,7 +267,7 @@ button {
   min-height: 22px;
 }
 
-.todo-list-delete-all {
+.todo-list-delete-all-text {
   font-size: 14px;
   color: var(--black-100);
   cursor: pointer;

@@ -126,7 +126,7 @@ const renderTasks = (tasks) => {
   if (tasks.length === 1 && markedTasks.length === 1) renderDeleteAllText();
 
   const DeleteAllTasks = () => {
-    const deleteAllText = document.querySelector('.todo-list-delete-all');
+    const deleteAllText = document.querySelector('.todo-list-delete-all-text');
 
     if (deleteAllText) {
       deleteAllText.addEventListener('click', () => {
@@ -160,12 +160,12 @@ const renderTasks = (tasks) => {
       const scrollWidth = element.scrollWidth;
       const clientWidth = element.clientWidth;
 
-      let redondeadoArriba = Math.ceil(scrollLeft);
+      let roundedUpNumber = Math.ceil(scrollLeft);
 
-      if (redondeadoArriba + clientWidth >= scrollWidth) {
+      if (roundedUpNumber + clientWidth >= scrollWidth) {
         tasksInputShadow[i].style.display = 'none';
         // Solo si no esta en foco y aun no llega al final
-      } else if (redondeadoArriba + clientWidth <= scrollWidth && !inputOnFocus) {
+      } else if (roundedUpNumber + clientWidth <= scrollWidth && !inputOnFocus) {
         tasksInputShadow[i].style.display = 'block';
       }
     });
@@ -293,11 +293,11 @@ const renderMarkedTasks = (markedTasks) => {
       const scrollWidth = element.scrollWidth;
       const clientWidth = element.clientWidth;
 
-      let redondeadoArriba = Math.ceil(scrollLeft);
+      let roundedUpNumber = Math.ceil(scrollLeft);
 
-      if (redondeadoArriba + clientWidth >= scrollWidth) {
+      if (roundedUpNumber + clientWidth >= scrollWidth) {
         markedTasksInputShadow[i].style.display = 'none';
-      } else if (redondeadoArriba + clientWidth <= scrollWidth) {
+      } else if (roundedUpNumber + clientWidth <= scrollWidth) {
         markedTasksInputShadow[i].style.display = 'block';
       }
     });
@@ -361,22 +361,22 @@ const deleteNoTasksText = () => {
 };
 
 const renderDeleteAllText = () => {
-  const deleteAll = document.querySelector('.todo-list-delete-all');
+  const deleteAllText = document.querySelector('.todo-list-delete-all-text');
 
-  if (!deleteAll) {
-    let deleteAllDiv = document.createElement('div');
+  if (!deleteAllText) {
+    let deleteAllTextDiv = document.createElement('div');
 
-    deleteAllDiv.classList.add('todo-list-delete-all');
-    deleteAllDiv.textContent = 'Delete all';
+    deleteAllTextDiv.classList.add('todo-list-delete-all-text');
+    deleteAllTextDiv.textContent = 'Delete all';
 
-    mainWrapper.appendChild(deleteAllDiv);
+    mainWrapper.appendChild(deleteAllTextDiv);
   }
 };
 
 const deleteDeleteAllText = () => {
-  const deleteAll = document.querySelector('.todo-list-delete-all');
+  const deleteAllText = document.querySelector('.todo-list-delete-all-text');
 
-  if (deleteAll) deleteAll.remove();
+  if (deleteAllText) deleteAllText.remove();
 };
 
 const onLoadPage = () => {
